@@ -12,7 +12,12 @@ func main() {
 	e.Use(middleware.Recover())
 
 	e.GET("/", func(c echo.Context) error {
-		return c.String(200, "Hello, World!")
+
+		jsonRepose := make(map[string]interface{})
+
+		jsonRepose["message"] = "Hello, World!"
+
+		return c.JSON(200, jsonRepose)
 	})
 
 	e.Logger.Fatal(e.Start(":8080"))

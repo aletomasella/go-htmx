@@ -36,12 +36,24 @@ func main() {
 	e.Renderer = newTemplates()
 
 	indexData := IndexData{
-		Title: "Hello, World!",
+		Title: "Hello!",
 		Count: 0,
 	}
 
 	e.GET("/", func(c echo.Context) error {
 
+		user := "Random User"
+
+		indexData.Title = "Hello, " + user + "!"
+		indexData.Count++
+		return c.Render(200, "index", indexData)
+
+	})
+
+	e.GET("/:user", func(c echo.Context) error {
+		user := c.Param("user")
+
+		indexData.Title = "Hello, " + user + "!"
 		indexData.Count++
 		return c.Render(200, "index", indexData)
 

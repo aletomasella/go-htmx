@@ -1,0 +1,18 @@
+<!doctype html>
+{{ block "index" . }}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>{{ .Title }}</title>
+        <!-- <link rel="stylesheet" href="css/styles.css" /> -->
+    </head>
+    <body>
+        <h1>HELLO</h1>
+        <h1>{{ .Count }}</h1>
+    </body>
+</html>
+{{ end }} {{block "increment" . }}
+<form action="/increment" method="post">
+    <button type="submit">Increment</button>
+</form>
+{{ end }}
